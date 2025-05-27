@@ -27,7 +27,9 @@ void Optimizer::models(std::unordered_set< Model > & results) {
         
         std::string serialization;
         (**iterator).serialize(serialization, 2);
-        std::cout << serialization << std::endl;
+        if (Configuration::verbose) {
+            std::cout << serialization << std::endl;
+        }
         results.insert(**iterator);
         delete model;
     }
