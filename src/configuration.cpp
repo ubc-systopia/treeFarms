@@ -121,7 +121,6 @@ void Configuration::configure(json config) {
 
     if (config.contains("rashomon")) { Configuration::rashomon = config["rashomon"]; }
     if (config.contains("rashomon_bound")) { Configuration::rashomon_bound = config["rashomon_bound"]; }
-    std::cout << config["rashomon_bound"] << std::endl;
     if (config.contains("rashomon_bound_multiplier")) { Configuration::rashomon_bound_multiplier = config["rashomon_bound_multiplier"]; }
     if (config.contains("rashomon_bound_adder")) { Configuration::rashomon_bound_adder = config["rashomon_bound_adder"]; }
     if (!config.contains("rashomon_bound") && !config.contains("rashomon_bound_multiplier") && !config.contains("rashomon_bound_adder")) {

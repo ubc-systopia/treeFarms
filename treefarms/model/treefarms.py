@@ -30,6 +30,7 @@ class TREEFARMS:
         self.reported_loss = 0
         self.model_set = None
         self.dataset = None
+        self.verbose = False if 'verbose' not in configuration.keys() else configuration['verbose']
 
     # TODO: implement this
     def load(self, path):
@@ -68,7 +69,8 @@ class TREEFARMS:
         # self.utime = treefarms.utime()
 
         if treefarms.status() == 0:
-            print("treefarms reported successful execution")
+            if self.verbose:
+                print("treefarms reported successful execution")
             self.timeout = False
         elif treefarms.status() == 2:
             print("treefarms reported possible timeout.")
@@ -86,7 +88,8 @@ class TREEFARMS:
         self.dataset = dataset
         self.model_set = ModelSetContainer(result)
 
-        print(f"training completed. Number of trees in the Rashomon set: {self.model_set.get_tree_count()}")
+        if self.verbose:
+            print(f"training completed. Number of trees in the Rashomon set: {self.model_set.get_tree_count()}")
 
 
     def fit(self, X, y):
